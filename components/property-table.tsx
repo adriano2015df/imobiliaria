@@ -23,9 +23,9 @@ const PropertyTable = async () => {
                     <td className="py-3 px-6">{property.name}</td>
                     <td className="py-3 px-6">{property.phone}</td>
                     <td className="py-3 px-6">{property.stateProperty}</td>
-                    <td className="py-3 px-6">{property.city}</td>
+                    <td className="py-3 px-6">{property.cityProperty}</td>
                     <td className="py-3 px-6">{property.area}</td>
-                    <td className="py-3 px-6">{property.decricao}</td>
+                    <td className="py-3 px-6">{property.description}</td>
                     <td className="py-3 px-6">{property.price}</td>
                 </tr>
                 ))}
