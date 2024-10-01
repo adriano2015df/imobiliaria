@@ -8,3 +8,14 @@ export const getProperties = async () => {
         throw new Error("Failed to fetch property data");
     }
 }
+
+export const getPropertyById = async (id: string) =>{
+    try {
+        const property = await prisma.property.findUnique({
+            where: {id},
+        });
+        return property;
+    } catch (error) {
+        throw new Error("failed to fetch property data");
+    }
+};

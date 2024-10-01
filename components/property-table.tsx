@@ -1,5 +1,5 @@
 import { getProperties } from "@/lib/data"
-
+import { EditButton, DeleteButton} from "@/components/buttons"
 const PropertyTable = async () => {
     const properties = await getProperties();
     return (
@@ -14,6 +14,7 @@ const PropertyTable = async () => {
                     <th className="py-3 px-6">KM²</th>
                     <th className="py-3 px-6">Descrição</th>                    
                     <th className="py-3 px-6">Preço</th>
+                    <th className="py-3 px-6">Ações</th>                    
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +28,10 @@ const PropertyTable = async () => {
                     <td className="py-3 px-6">{property.area}</td>
                     <td className="py-3 px-6">{property.description}</td>
                     <td className="py-3 px-6">{property.price}</td>
+                    <td className="py-3 px-6">
+                        <EditButton id={property.id} />
+                        <DeleteButton id={property.id} />
+                    </td>
                 </tr>
                 ))}
                 

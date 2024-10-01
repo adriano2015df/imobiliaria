@@ -42,3 +42,47 @@ export const saveProperty = async (prevSate:any, formData: FormData) => {
     revalidatePath("/properties");
     redirect("/properties");
 };
+
+
+export const updateProperty = async (
+    id: string,
+    prevSate: any,
+    formData: FormData
+) => {
+    const validateFields = PropertySchema.safeParse(Object.fromEntries(formData.entries()));
+    if (!validateFields.success){
+        return {
+        Error: validateFields.error?.flatten().fieldErrors,
+        }
+    }
+    try {
+        await prisma.property.update({
+           data:{
+            name: validateFields.data.name,
+            phone: validateFields.data.phone,
+            stateProperty: validateFields.data.stateProperty,
+            cityProperty: validateFields.data.cityProperty,
+            area: validateFields.data.area,
+            description: validateFields.data.description,
+            price: validateFields.data.price 
+           },
+           where: {id},
+        })
+    } catch (error) {
+        return {mesage: "Failed to update Property"}
+    }
+
+    revalidatePath("/properties");
+    redirect("/properties");
+};
+
+  export const deleteProperty = async (id: string) => {
+    try {
+        await prisma.property.delete({
+            where: {id},
+        })
+    } catch (error) {
+        return { message: "Failed to delete Property"}      
+    }
+        revalidatePath("/properties");
+  };
