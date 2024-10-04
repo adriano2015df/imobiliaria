@@ -3,9 +3,13 @@
 import { saveProperty } from "@/lib/actions"
 import { useFormState } from "react-dom";
 import { SubmitButton } from "@/components/buttons"
-const CreateForm = () => {
-    const [state, formAction] = useFormState(saveProperty, null)
+import BtnLogout from "./LogoutBtn";
 
+ 
+const  CreateForm =  () => {
+   
+   const [state, formAction] = useFormState(saveProperty, null)
+   
   return(
     <div>
         <form action={formAction}>
@@ -74,6 +78,9 @@ const CreateForm = () => {
             </div>
             <SubmitButton label="salvar" />
         </form>
+        <div className="logout">
+         <BtnLogout />
+        </div>
     </div>
   )
 }
